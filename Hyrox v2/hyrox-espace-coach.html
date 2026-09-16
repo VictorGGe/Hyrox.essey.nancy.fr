@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espace coach — Prépa Hyrox Basic-Fit Essey</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0E0E0E;--surface:#171717;--surface2:#1F1F1F;--orange:#F7941E;--orange2:#FFB04D;
+  --blanc:#FFF;--gris:#9A9A9A;--ligne:#2E2E2E;--vert:#3FBF6F;--rouge:#E0544E;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --cond:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --texte:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--noir);color:var(--blanc);font-family:var(--texte);font-size:15px;line-height:1.55}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:1;margin:0}
+p{margin:0 0 .9em}
+a{color:var(--orange)}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+.btn{font-family:var(--cond);font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.04em;background:var(--orange);color:#111;border:0;padding:11px 18px;cursor:pointer;clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.btn:hover{background:var(--orange2)}
+.btn.ghost{background:transparent;color:var(--blanc);border:1px solid var(--ligne);clip-path:none}
+.btn.ghost:hover{border-color:var(--orange);color:var(--orange)}
+.btn.sm{padding:6px 11px;font-size:14px}
+.btn[disabled]{background:var(--surface2);color:#6b6b6b;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--orange2);outline-offset:2px}
+label{display:block;font-family:var(--cond);font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);margin:14px 0 5px}
+input,select{width:100%;background:var(--surface2);border:1px solid var(--ligne);color:var(--blanc);padding:11px 12px;font-family:var(--texte);font-size:16px}
+input:focus,select:focus{border-color:var(--orange)}
+.err{color:var(--rouge);font-size:14px;margin-top:10px;display:none}
+.err.on{display:block}
+
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.carte{width:min(400px,100%);background:var(--surface);border-top:5px solid var(--orange);padding:26px}
+.carte h1{font-size:29px;margin-bottom:6px}
+.carte .sub{color:var(--gris);font-size:14px;margin-bottom:4px}
+
+#appli{display:none}
+header{position:sticky;top:0;z-index:20;background:rgba(14,14,14,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--ligne)}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+.qui{font-family:var(--cond);font-size:18px;text-transform:uppercase;letter-spacing:.03em}
+.qui b{color:var(--orange)}
+.banniere{background:rgba(224,84,78,.12);border-bottom:1px solid rgba(224,84,78,.4);font-size:13px;padding:8px 0;color:#f0b3b0;display:none}
+.banniere.on{display:block}
+
+.nav-sem{display:flex;align-items:center;gap:10px;margin:22px 0 18px}
+.nav-sem button{background:var(--surface2);border:1px solid var(--ligne);color:var(--blanc);width:38px;height:38px;font-size:18px;cursor:pointer}
+.nav-sem button:hover{border-color:var(--orange);color:var(--orange)}
+.nav-sem .titre{font-family:var(--display);font-size:clamp(19px,5vw,26px);flex:1}
+.nav-sem .titre small{display:block;font-family:var(--texte);font-size:13px;color:var(--gris);text-transform:none;margin-top:4px}
+.bandeau-coach{background:var(--surface);border-left:5px solid var(--orange);padding:13px 15px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.bandeau-coach .t{font-family:var(--cond);font-size:20px;text-transform:uppercase;letter-spacing:.03em}
+.bandeau-coach .t b{color:var(--orange)}
+
+.kpi{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-bottom:24px}
+@media(min-width:680px){.kpi{grid-template-columns:repeat(4,1fr)}}
+.kpi div{background:var(--noir);padding:13px 13px 15px}
+.kpi b{display:block;font-family:var(--display);font-size:25px}
+.kpi small{font-family:var(--cond);font-size:13.5px;color:var(--gris);text-transform:uppercase;letter-spacing:.05em}
+.kpi .alerte b{color:var(--orange)}
+
+.creneau{background:var(--surface);border:1px solid var(--ligne);border-left:5px solid var(--ligne);margin-bottom:12px}
+.creneau.confirme{border-left-color:var(--vert)}
+.creneau.ouvert{border-left-color:var(--orange)}
+.creneau.complet{border-left-color:#5b5b5b}
+.creneau.close{border-left-color:#4b7bec}
+.cr-tete{display:flex;align-items:center;gap:12px;padding:14px 15px;cursor:pointer;flex-wrap:wrap}
+.cr-h{font-family:var(--display);font-size:21px}
+.cr-sous{font-family:var(--cond);font-size:16px;color:var(--gris);text-transform:uppercase;letter-spacing:.04em}
+.pousse{margin-left:auto;display:flex;align-items:center;gap:10px}
+.jauge{display:flex;gap:4px;width:88px}
+.jauge i{flex:1;height:8px;background:#333}
+.jauge i.pris{background:var(--orange)}
+.creneau.confirme .jauge i.pris,.creneau.complet .jauge i.pris{background:var(--vert)}
+.etat{font-family:var(--cond);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.06em;padding:4px 9px;white-space:nowrap}
+.etat.ouvert{background:rgba(247,148,30,.15);color:var(--orange)}
+.etat.confirme{background:rgba(63,191,111,.15);color:var(--vert)}
+.etat.complet{background:#262626;color:#8d8d8d}
+.etat.close{background:rgba(75,123,236,.16);color:#7aa5f5}
+.chev{color:var(--gris);font-size:13px}
+.cr-corps{display:none;border-top:1px solid var(--ligne);padding:4px 15px 15px}
+.creneau.deplie .cr-corps{display:block}
+
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--ligne);vertical-align:middle}
+th{font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em;color:var(--gris);font-weight:600;font-size:13px}
+td .meta{color:var(--gris);font-size:12.5px}
+.pastille{font-family:var(--cond);font-size:13px;font-weight:700;text-transform:uppercase;padding:3px 8px;white-space:nowrap}
+.p-paye{background:rgba(63,191,111,.15);color:var(--vert)}
+.p-attente{background:rgba(247,148,30,.15);color:var(--orange)}
+.p-gel{background:#262626;color:#8d8d8d}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.vide{color:var(--gris);font-size:14px;padding:12px 0}
+section.bloc{padding:28px 0;border-top:1px solid var(--ligne);margin-top:26px}
+section.bloc h2{font-size:23px;margin-bottom:6px}
+section.bloc .chapo{color:var(--gris);font-size:14px;margin-bottom:14px;max-width:64ch}
+.rot{display:grid;gap:1px;background:var(--ligne);border:1px solid var(--ligne);font-size:14px}
+.rot>div{background:var(--noir);padding:10px 12px;display:flex;justify-content:space-between;gap:10px}
+.rot .sem{font-family:var(--cond);text-transform:uppercase;color:var(--gris)}
+.rot b{color:var(--orange)}
+.encart{background:rgba(247,148,30,.1);border:1px solid rgba(247,148,30,.35);padding:13px;font-size:13.5px;margin-top:16px}
+footer{border-top:1px solid var(--ligne);padding:24px 0 46px;color:#7d7d7d;font-size:13px;margin-top:18px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--orange);color:#111;font-family:var(--cond);font-weight:700;text-transform:uppercase;padding:11px 18px;z-index:60;display:none}
+.toast.on{display:block}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="carte">
+    <h1>Espace coach</h1>
+    <p class="sub">Prépa Hyrox — Basic-Fit Essey-lès-Nancy</p>
+    <label for="qui">Qui es-tu&nbsp;?</label>
+    <select id="qui"><option value="Boris">Boris</option><option value="Nino">Nino</option><option value="Victor">Victor</option></select>
+    <label for="mdp">Mot de passe</label>
+    <input type="password" id="mdp" autocomplete="current-password">
+    <p class="err" id="errLog">Mot de passe incorrect pour ce compte.</p>
+    <p style="margin-top:18px"><button class="btn" id="entrer">Entrer</button></p>
+    <p style="margin-top:16px;font-size:13px"><a href="hyrox-admin.html">Portail administrateur</a> · <a href="hyrox-training-club.html">Site public</a></p>
+  </div>
+</div>
+
+<div id="appli">
+<div class="banniere" id="banniere"><div class="wrap">Sauvegarde indisponible sur cet hébergement : les modifications ne seront pas conservées.</div></div>
+<header><div class="wrap hbar">
+  <div class="qui">Espace coach · <b id="nomCoach"></b></div>
+  <button class="btn ghost sm" id="sortir">Quitter</button>
+</div></header>
+
+<div class="wrap">
+  <div class="nav-sem">
+    <button id="prec" aria-label="Semaine précédente">‹</button>
+    <div class="titre" id="titreSem">—<small id="sousSem"></small></div>
+    <button id="suiv" aria-label="Semaine suivante">›</button>
+  </div>
+
+  <div class="bandeau-coach" id="bandeau"></div>
+  <div class="kpi" id="kpi"></div>
+  <div id="creneaux"></div>
+
+  <div class="actions" style="margin-top:16px">
+    <button class="btn ghost sm" id="expInscrits">Exporter les inscrits (CSV)</button>
+    <button class="btn ghost sm" id="expCompta">Exporter la compta (CSV)</button>
+  </div>
+
+  <section class="bloc">
+    <h2>Rotation à venir</h2>
+    <p class="chapo">Un mercredi entier par coach, puis on passe au suivant. Ton nom apparaît en orange.</p>
+    <div class="rot" id="rotation"></div>
+  </section>
+
+  <section class="bloc">
+    <h2>Mon activité</h2>
+    <p class="chapo">Calculé sur les séances que tu as clôturées, toutes semaines confondues.</p>
+    <div class="kpi" id="monBilan"></div>
+    <div class="encart">Une séance n'est comptée dans tes heures qu'après avoir été clôturée en bas de son créneau. C'est ce qui alimente l'historique du portail administrateur.</div>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <p>Données personnelles de participants : ne les diffusez pas hors de l'équipe et supprimez les exports après usage.</p>
+  <p><a href="hyrox-training-club.html">Site public</a> · <a href="hyrox-admin.html">Portail administrateur</a></p>
+</div></footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ═══ Comptes coachs ═══
+   Démonstration : mots de passe visibles dans le code source.
+   En production, authentification côté serveur (voir INTEGRATION.md). */
+const MDP = {Boris:"Sled-Boris-54!", Nino:"Wall-Nino-54!", Victor:"SkiErg-Victor-54!"};
+
+const CLE_RESA = "hyrox:reservations", CLE_SEANCES = "hyrox:seances", CLE_REMPLAC = "hyrox:remplacements";
+const BD = (()=>{
+  const dispo = typeof window !== "undefined" && window.storage && typeof window.storage.get === "function";
+  const mem = {};
+  return {
+    persistant: !!dispo,
+    async lire(c,d){ if(!dispo) return c in mem ? mem[c] : d;
+      try{ const r = await window.storage.get(c, true); return r && r.value ? JSON.parse(r.value) : d; }catch(e){ return d; } },
+    async ecrire(c,v){ mem[c]=v; if(!dispo) return false;
+      try{ await window.storage.set(c, JSON.stringify(v), true); return true; }catch(e){ return false; } }
+  };
+})();
+
+const COACHS = ["Boris","Nino","Victor"];
+const HORAIRES = [["14h00","15h00"],["15h00","16h00"],["16h00","17h00"],["17h00","18h00"]];
+const CAPACITE = 6, SEUIL = 3, PRIX = 15;
+const ANCRAGE = Date.UTC(2026,8,16);
+
+function coachDuJour(d){
+  const j = Date.UTC(d.getFullYear(),d.getMonth(),d.getDate());
+  return COACHS[(((Math.round((j-ANCRAGE)/604800000)) % 3) + 3) % 3];
+}
+function mercrediDe(o){ const d=new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()+((3-d.getDay()+7)%7)+o*7); return d; }
+const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const enLettres = d => d.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+const court = d => d.toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
+
+let moi = null, offset = 0, jour = null, resas = [], seances = [], remplac = {}, deplie = {};
+
+const coachDe = d => remplac[iso(d)] || coachDuJour(d);
+const inscrits = (dIso,s) => resas.filter(r=>r.date===dIso && r.slot===s && r.statut!=="annule");
+const etatSlot = (dIso,s)=>{ const n=inscrits(dIso,s).length; return n>=CAPACITE?"complet":(n>=SEUIL?"confirme":"ouvert"); };
+const LIB = {ouvert:"À confirmer",confirme:"Confirmé",complet:"Complet"};
+const estClose = (dIso,s) => seances.some(x=>x.date===dIso && x.slot===s);
+
+function toast(t){ const e=document.getElementById("toast"); e.textContent=t; e.classList.add("on");
+  clearTimeout(e._h); e._h=setTimeout(()=>e.classList.remove("on"),2500); }
+
+/* ═══ Connexion ═══ */
+document.getElementById("entrer").onclick = async ()=>{
+  const q = document.getElementById("qui").value;
+  if(MDP[q] !== document.getElementById("mdp").value){ document.getElementById("errLog").classList.add("on"); return; }
+  moi = q;
+  document.getElementById("login").style.display = "none";
+  document.getElementById("appli").style.display = "block";
+  document.getElementById("nomCoach").textContent = moi;
+  if(!BD.persistant) document.getElementById("banniere").classList.add("on");
+  await charger();
+};
+document.getElementById("mdp").addEventListener("keydown", e=>{ if(e.key==="Enter") document.getElementById("entrer").click(); });
+document.getElementById("sortir").onclick = ()=>location.reload();
+document.getElementById("prec").onclick = ()=>{ offset--; deplie={}; rendre(); };
+document.getElementById("suiv").onclick = ()=>{ offset++; deplie={}; rendre(); };
+
+async function charger(){
+  resas = await BD.lire(CLE_RESA, []);
+  seances = await BD.lire(CLE_SEANCES, []);
+  remplac = await BD.lire(CLE_REMPLAC, {});
+  rendre();
+}
+
+/* ═══ Rendu ═══ */
+function rendre(){
+  jour = mercrediDe(offset);
+  const dIso = iso(jour), coach = coachDe(jour), passe = jour < new Date().setHours(0,0,0,0);
+
+  document.getElementById("titreSem").childNodes[0].nodeValue =
+    offset === 0 ? "Mercredi prochain" : (offset < 0 ? "Semaine passée" : "Dans " + offset + (offset>1?" semaines":" semaine"));
+  document.getElementById("sousSem").textContent = enLettres(jour);
+
+  const mien = coach === moi;
+  document.getElementById("bandeau").innerHTML =
+    '<div class="t">'+(mien ? "C'est <b>ton</b> mercredi" : "Mercredi de <b>"+coach+"</b>")+
+    (remplac[dIso] ? ' <span style="color:var(--gris)">(remplacement)</span>' : '')+'</div>'+
+    (mien ? '<button class="btn ghost sm" id="btnIndispo">Je ne peux pas, passer la main</button>'
+          : (remplac[dIso]===moi ? '' : '<button class="btn ghost sm" id="btnReprendre">Je reprends ce mercredi</button>'));
+
+  const tot = [0,1,2,3].reduce((s,i)=>s+inscrits(dIso,i).length,0);
+  const conf = [0,1,2,3].filter(i=>etatSlot(dIso,i)!=="ouvert");
+  const payes = conf.reduce((s,i)=>s+inscrits(dIso,i).filter(r=>r.statut==="paye").length,0);
+  const attente = conf.reduce((s,i)=>s+inscrits(dIso,i).filter(r=>r.statut!=="paye").length,0);
+  document.getElementById("kpi").innerHTML =
+    '<div><b>'+conf.length+' / 4</b><small>séances confirmées</small></div>'+
+    '<div><b>'+tot+' / 24</b><small>places prises</small></div>'+
+    '<div><b>'+(payes*PRIX)+' €</b><small>encaissé</small></div>'+
+    '<div class="'+(attente?"alerte":"")+'"><b>'+attente+'</b><small>paiements en attente</small></div>';
+
+  document.getElementById("creneaux").innerHTML = HORAIRES.map((h,i)=>{
+    const liste = inscrits(dIso,i), n = liste.length, s = etatSlot(dIso,i), close = estClose(dIso,i);
+    let j=""; for(let k=0;k<CAPACITE;k++) j += '<i class="'+(k<n?"pris":"")+'"></i>';
+    return '<article class="creneau '+(close?"close":s)+(deplie[i]?" deplie":"")+'">'+
+      '<div class="cr-tete" role="button" tabindex="0" data-t="'+i+'">'+
+        '<div><div class="cr-h">'+h[0]+'</div><div class="cr-sous">'+n+' inscrit'+(n>1?"s":"")+'</div></div>'+
+        '<div class="pousse"><div class="jauge" role="img" aria-label="'+n+' sur 6">'+j+'</div>'+
+        '<span class="etat '+(close?"close":s)+'">'+(close?"Clôturée":LIB[s])+'</span>'+
+        '<span class="chev">'+(deplie[i]?"▲":"▼")+'</span></div></div>'+
+      '<div class="cr-corps">'+corps(dIso,i,liste,s,close,passe)+'</div></article>';
+  }).join("");
+
+  document.querySelectorAll("[data-t]").forEach(el=>{
+    const f = ()=>{ const i=+el.dataset.t; deplie[i]=!deplie[i]; rendre(); };
+    el.onclick = f;
+    el.onkeydown = e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); f(); } };
+  });
+  document.querySelectorAll("[data-act]").forEach(b=>{
+    b.onclick = e=>{ e.stopPropagation(); agir(b.dataset.act, b.dataset.id, +b.dataset.slot); };
+  });
+  const bi = document.getElementById("btnIndispo");
+  if(bi) bi.onclick = ()=>passerLaMain(dIso);
+  const br = document.getElementById("btnReprendre");
+  if(br) br.onclick = async ()=>{ remplac[dIso] = moi; await BD.ecrire(CLE_REMPLAC, remplac); toast("Tu reprends ce mercredi"); rendre(); };
+
+  rendreRotation(); rendreBilan();
+}
+
+function corps(dIso, slot, liste, s, close, passe){
+  if(!liste.length) return '<p class="vide">Personne d\'inscrit. Le créneau s\'annule seul s\'il n\'atteint pas trois personnes 48 h avant.</p>';
+  const lignes = liste.map(r=>{
+    const paie = s === "ouvert" ? ["Non demandé","p-gel"] : (r.statut==="paye" ? ["Payé","p-paye"] : ["En attente","p-attente"]);
+    let act = "";
+    if(!close){
+      if(s !== "ouvert" && r.statut !== "paye")
+        act += '<button class="btn ghost sm" data-act="encaisser" data-id="'+r.id+'" data-slot="'+slot+'">Marquer payé</button> ';
+      act += '<button class="btn ghost sm" data-act="annuler" data-id="'+r.id+'" data-slot="'+slot+'">Annuler</button>';
+    } else {
+      act = r.presence === false ? "Absent" : "Présent";
+    }
+    return '<tr><td><b>'+r.prenom+' '+r.nom+'</b><div class="meta">'+r.tel+' · '+r.email+'</div></td>'+
+      '<td>'+r.niveau+'<div class="meta">'+r.objectif+'</div></td>'+
+      '<td><span class="pastille '+paie[1]+'">'+paie[0]+'</span></td><td>'+act+'</td></tr>';
+  }).join("");
+  const boutons = close
+    ? '<p class="vide">Séance clôturée : elle compte dans tes heures et dans l\'historique administrateur.</p>'
+    : '<div class="actions">'+
+      (s !== "ouvert" ? '<button class="btn sm" data-act="cloturer" data-id="" data-slot="'+slot+'">Clôturer la séance</button>' : '')+
+      '<button class="btn ghost sm" data-act="contrats" data-id="" data-slot="'+slot+'">Contrats signés ('+liste.length+')</button>'+
+      '<button class="btn ghost sm" data-act="message" data-id="" data-slot="'+slot+'">Message au groupe</button></div>';
+  return '<table><thead><tr><th>Participant</th><th>Niveau et objectif</th><th>Paiement</th><th></th></tr></thead><tbody>'+lignes+'</tbody></table>'+boutons;
+}
+
+async function agir(type, id, slot){
+  const dIso = iso(jour);
+  if(type === "encaisser"){
+    const r = resas.find(x=>x.id===id); r.statut = "paye"; r.payeLe = new Date().toISOString();
+    await BD.ecrire(CLE_RESA, resas); toast("Paiement enregistré");
+  }
+  if(type === "annuler"){
+    if(!confirm("Annuler définitivement cette inscription ?")) return;
+    const r = resas.find(x=>x.id===id); r.statut = "annule";
+    await BD.ecrire(CLE_RESA, resas); toast("Inscription annulée");
+  }
+  if(type === "cloturer"){
+    const liste = inscrits(dIso, slot);
+    const presents = liste.filter(r => confirm(r.prenom+" "+r.nom+" était présent ? (Annuler = absent)"));
+    liste.forEach(r => r.presence = presents.includes(r));
+    const encaisse = liste.filter(r=>r.statut==="paye").length * PRIX;
+    seances.push({
+      id:"s"+Date.now(), date:dIso, slot, debut:HORAIRES[slot][0], fin:HORAIRES[slot][1],
+      coach: coachDe(jour), duree: 1, inscrits: liste.length, presents: presents.length,
+      encaisse, clotureLe: new Date().toISOString()
+    });
+    await BD.ecrire(CLE_SEANCES, seances);
+    await BD.ecrire(CLE_RESA, resas);
+    toast("Séance clôturée · "+encaisse+" € · 1 h");
+  }
+  if(type === "contrats") return toast("Démo : téléchargement des contrats PDF signés");
+  if(type === "message") return toast("Démo : message groupé envoyé aux inscrits");
+  rendre();
+}
+
+async function passerLaMain(dIso){
+  const autres = COACHS.filter(c=>c!==moi);
+  const choix = prompt("Qui reprend ce mercredi ? "+autres.join(" ou "), autres[0]);
+  if(!choix) return;
+  const n = COACHS.find(c=>c.toLowerCase() === choix.trim().toLowerCase());
+  if(!n || n === moi) return toast("Nom non reconnu");
+  remplac[dIso] = n;
+  await BD.ecrire(CLE_REMPLAC, remplac);
+  toast(n+" reprend ce mercredi");
+  rendre();
+}
+
+function rendreRotation(){
+  let h = "";
+  for(let k=0;k<6;k++){
+    const d = mercrediDe(offset+k), c = coachDe(d);
+    h += '<div><span class="sem">'+court(d)+'</span><span>'+(c===moi?"<b>"+c+"</b>":c)+
+         (remplac[iso(d)]?' <span style="color:var(--gris)">· remplacement</span>':'')+'</span></div>';
+  }
+  document.getElementById("rotation").innerHTML = h;
+}
+
+function rendreBilan(){
+  const miennes = seances.filter(s=>s.coach === moi);
+  const heures = miennes.reduce((a,s)=>a+s.duree,0);
+  const ca = miennes.reduce((a,s)=>a+s.encaisse,0);
+  const part = miennes.reduce((a,s)=>a+s.presents,0);
+  document.getElementById("monBilan").innerHTML =
+    '<div><b>'+miennes.length+'</b><small>séances clôturées</small></div>'+
+    '<div><b>'+heures+' h</b><small>heures effectuées</small></div>'+
+    '<div><b>'+ca+' €</b><small>chiffre généré</small></div>'+
+    '<div><b>'+part+'</b><small>participants vus</small></div>';
+}
+
+/* ═══ Exports ═══ */
+function csv(nom, lignes){
+  const t = "\uFEFF" + lignes.map(l=>l.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(";")).join("\r\n");
+  const u = URL.createObjectURL(new Blob([t],{type:"text/csv;charset=utf-8"}));
+  const a = document.createElement("a"); a.href=u; a.download=nom; a.click(); URL.revokeObjectURL(u);
+  toast("Fichier exporté");
+}
+document.getElementById("expInscrits").onclick = ()=>{
+  const dIso = iso(jour);
+  const l = [["Date","Créneau","Coach","Prénom","Nom","Email","Téléphone","Niveau","Objectif","Statut","Droit image"]];
+  [0,1,2,3].forEach(i=>inscrits(dIso,i).forEach(r=>l.push([r.date, r.debut+"-"+r.fin, coachDe(jour), r.prenom, r.nom,
+    r.email, r.tel, r.niveau, r.objectif, r.statut, r.image?"oui":"non"])));
+  csv("inscrits-"+dIso+".csv", l);
+};
+document.getElementById("expCompta").onclick = ()=>{
+  const dIso = iso(jour);
+  const l = [["Date","Créneau","Coach","Statut","Inscrits","Payés","Encaissé","Attendu"]];
+  [0,1,2,3].forEach(i=>{
+    const li = inscrits(dIso,i), p = li.filter(r=>r.statut==="paye").length, s = etatSlot(dIso,i);
+    l.push([dIso, HORAIRES[i][0]+"-"+HORAIRES[i][1], coachDe(jour), s, li.length, p, p*PRIX+" €",
+      s==="ouvert" ? "0 €" : (li.length-p)*PRIX+" €"]);
+  });
+  csv("compta-"+dIso+".csv", l);
+};
+</script>
+</body>
+</html>

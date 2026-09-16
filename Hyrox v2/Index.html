@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Préparation Hyrox — Basic-Fit Essey-lès-Nancy</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Préparation à la course Hyrox, le mercredi de 14h à 18h au Basic-Fit d'Essey-lès-Nancy. 15 € la séance, 6 personnes maximum, paiement par carte une fois le créneau confirmé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0E0E0E;--surface:#171717;--surface2:#202020;--orange:#F7941E;--orange2:#FFB04D;
+  --blanc:#FFF;--gris:#9A9A9A;--ligne:#2E2E2E;--vert:#3FBF6F;--rouge:#E0544E;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --cond:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --texte:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--noir);color:var(--blanc);font-family:var(--texte);font-size:16px;line-height:1.6}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.95;margin:0}
+p{margin:0 0 1em}
+a{color:var(--orange)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.sec{padding:60px 0;border-top:1px solid var(--ligne)}
+.sec h2{font-size:clamp(28px,7vw,50px);margin-bottom:8px}
+.chapo{color:var(--gris);max-width:62ch;margin-bottom:28px}
+.btn{font-family:var(--cond);font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.04em;background:var(--orange);color:#111;border:0;padding:12px 20px;cursor:pointer;display:inline-block;text-decoration:none;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.btn:hover{background:var(--orange2)}
+.btn.sm{padding:8px 15px;font-size:15px}
+.btn.ghost{background:transparent;color:var(--blanc);border:1px solid var(--ligne);clip-path:none}
+.btn.ghost:hover{border-color:var(--orange);color:var(--orange)}
+.btn[disabled]{background:var(--surface2);color:#6b6b6b;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--orange2);outline-offset:2px}
+
+header.bar{position:sticky;top:0;z-index:40;background:rgba(14,14,14,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--ligne)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;height:58px}
+.marque{font-family:var(--display);font-size:16px;text-transform:uppercase;line-height:1.15}
+.marque span{color:var(--orange)}
+
+.hero{padding:54px 0 46px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:auto -20% -40% 42%;height:300px;background:var(--orange);transform:rotate(-14deg);opacity:.12}
+.hero h1{font-size:clamp(42px,12.5vw,104px);position:relative}
+.hero h1 em{font-style:normal;display:block;color:var(--orange)}
+.accroche{font-family:var(--cond);font-size:clamp(19px,4.6vw,26px);font-weight:500;color:#D8D8D8;max-width:24ch;margin:20px 0 26px;position:relative}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.note-prix{font-family:var(--cond);font-size:17px;color:var(--gris);margin-top:14px;position:relative}
+.chiffres{display:flex;border-top:2px solid var(--orange);border-bottom:1px solid var(--ligne);margin-top:34px;position:relative}
+.chiffres div{flex:1;padding:13px 8px 15px;border-right:1px solid var(--ligne)}
+.chiffres div:last-child{border-right:0}
+.chiffres b{display:block;font-family:var(--display);font-size:clamp(21px,6vw,32px)}
+.chiffres small{font-family:var(--cond);font-size:13.5px;color:var(--gris);text-transform:uppercase;letter-spacing:.05em}
+
+.piste{list-style:none;margin:0;padding:0;counter-reset:st}
+.piste li{display:grid;grid-template-columns:48px 1fr auto;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--ligne)}
+.piste li:before{counter-increment:st;content:counter(st);font-family:var(--display);font-size:19px;color:var(--orange)}
+.piste .nom{font-family:var(--cond);font-size:20px;font-weight:600;text-transform:uppercase}
+.piste .dose{font-family:var(--cond);font-size:18px;color:var(--gris);white-space:nowrap}
+.piste .run{font-family:var(--cond);font-size:13.5px;text-transform:uppercase;letter-spacing:.07em;color:#7d7d7d;grid-column:2/4;margin-top:-6px}
+
+.grid2{display:grid;gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
+@media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}}
+.bloc{background:var(--noir);padding:22px}
+.bloc h3{font-size:21px;margin-bottom:7px}
+.bloc p{color:var(--gris);margin:0;font-size:15px}
+
+.coachs{display:grid;gap:14px}
+@media(min-width:720px){.coachs{grid-template-columns:repeat(3,1fr)}}
+.coach{background:var(--surface);border-left:4px solid var(--ligne);padding:18px}
+.coach.actif{border-left-color:var(--orange);background:#1C1913}
+.coach h3{font-size:23px}
+.coach .spe{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;color:var(--orange);font-size:15px;margin:3px 0 8px}
+.coach p{color:var(--gris);font-size:14.5px;margin:0}
+.coach .quand{font-family:var(--cond);font-size:15px;color:var(--blanc);margin-top:9px;text-transform:uppercase;letter-spacing:.04em}
+
+.onglets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.onglet{background:var(--surface);border:1px solid var(--ligne);color:var(--blanc);padding:10px 14px;cursor:pointer;font-family:var(--cond);font-size:16px;text-transform:uppercase;letter-spacing:.04em;text-align:left;line-height:1.25}
+.onglet b{display:block;font-size:18px}
+.onglet small{color:var(--gris);font-family:var(--texte);font-size:12px;text-transform:none;letter-spacing:0}
+.onglet[aria-selected=true]{border-color:var(--orange);background:#1C1913}
+.onglet[aria-selected=true] small{color:var(--orange2)}
+
+.creneau{background:var(--surface);border:1px solid var(--ligne);border-left:5px solid var(--ligne);padding:16px;margin-bottom:12px}
+.creneau.confirme{border-left-color:var(--vert)}
+.creneau.ouvert{border-left-color:var(--orange)}
+.creneau.complet{border-left-color:#5b5b5b;opacity:.85}
+.cr-haut{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.cr-h{font-family:var(--display);font-size:25px;line-height:1}
+.cr-coach{font-family:var(--cond);font-size:17px;color:var(--gris);text-transform:uppercase;letter-spacing:.04em}
+.etat{font-family:var(--cond);font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.06em;padding:5px 10px;white-space:nowrap}
+.etat.ouvert{background:rgba(247,148,30,.15);color:var(--orange)}
+.etat.confirme{background:rgba(63,191,111,.15);color:var(--vert)}
+.etat.complet{background:#262626;color:#8d8d8d}
+.jauge{display:flex;gap:5px;margin:13px 0 9px}
+.jauge i{flex:1;height:9px;background:#333}
+.jauge i.pris{background:var(--orange)}
+.creneau.confirme .jauge i.pris,.creneau.complet .jauge i.pris{background:var(--vert)}
+.cr-bas{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.cr-info{font-family:var(--cond);font-size:17px;color:var(--gris)}
+.cr-info b{color:var(--blanc)}
+
+dialog{border:0;padding:0;background:var(--noir);color:var(--blanc);width:min(640px,94vw);max-height:92vh;margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.82)}
+.dlg-bar{position:sticky;top:0;background:var(--orange);color:#111;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.dlg-bar h2{font-size:21px}
+.dlg-bar button{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;color:#111}
+.dlg-corps{padding:18px 18px 28px;overflow:auto}
+.etapes{display:flex;gap:6px;margin-bottom:18px}
+.etapes span{flex:1;height:4px;background:#333}
+.etapes span.on{background:var(--orange)}
+label{display:block;font-family:var(--cond);font-size:16px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);margin:13px 0 5px}
+input[type=text],input[type=email],input[type=tel],input[type=date],select{width:100%;background:var(--surface2);border:1px solid var(--ligne);color:var(--blanc);padding:11px 12px;font-family:var(--texte);font-size:16px}
+input:focus,select:focus{border-color:var(--orange)}
+.duo{display:grid;gap:0 14px}
+@media(min-width:560px){.duo{grid-template-columns:1fr 1fr}}
+.coche{display:flex;gap:11px;align-items:flex-start;background:var(--surface);border:1px solid var(--ligne);padding:12px;margin:9px 0;font-size:14.5px;line-height:1.5;cursor:pointer;text-transform:none;letter-spacing:0;color:var(--blanc);font-family:var(--texte)}
+.coche input{margin:3px 0 0;width:19px;height:19px;flex:0 0 auto;accent-color:var(--orange)}
+.coche.requis{border-left:3px solid var(--orange)}
+.coche small{color:var(--gris);display:block}
+.cgv{background:var(--surface);border:1px solid var(--ligne);padding:15px;max-height:250px;overflow:auto;font-size:14px;line-height:1.55}
+.cgv h4{font-family:var(--cond);font-size:17px;text-transform:uppercase;letter-spacing:.04em;color:var(--orange);margin:15px 0 4px}
+.cgv h4:first-child{margin-top:0}
+.cgv p{margin:0 0 8px;color:#C9C9C9}
+.recap{background:var(--surface);border-left:4px solid var(--orange);padding:13px 15px;font-family:var(--cond);font-size:19px;margin-bottom:16px}
+.recap b{font-family:var(--texte);font-size:15px;display:block;color:var(--gris);font-weight:400;text-transform:none}
+.err{color:var(--rouge);font-size:14px;margin-top:10px;display:none}
+.err.on{display:block}
+.fin{text-align:center;padding:10px 0}
+.fin .pic{font-family:var(--display);font-size:50px;color:var(--orange);line-height:1}
+.fin h3{font-size:25px;margin:10px 0 9px}
+.fin p{color:var(--gris);max-width:46ch;margin:0 auto 12px}
+.encart{background:rgba(247,148,30,.11);border:1px solid rgba(247,148,30,.35);padding:13px;font-size:14px;text-align:left;margin-top:15px}
+
+/* paiement carte */
+.carte-paie{background:var(--surface);border:1px solid var(--ligne);padding:16px;text-align:left}
+.carte-paie .ligne{display:flex;justify-content:space-between;font-family:var(--cond);font-size:20px;border-bottom:1px solid var(--ligne);padding-bottom:10px;margin-bottom:14px}
+.champ-carte{background:var(--surface2);border:1px solid var(--ligne);padding:12px;font-family:var(--texte);color:#6b6b6b;font-size:15px;margin-bottom:9px;display:flex;justify-content:space-between}
+.marques{display:flex;gap:6px;align-items:center}
+.marques span{font-family:var(--cond);font-size:11px;font-weight:700;background:#2b2b2b;color:#bbb;padding:2px 6px;letter-spacing:.05em}
+.secu{font-size:12.5px;color:var(--gris);margin-top:10px;display:flex;gap:7px;align-items:flex-start}
+
+.banniere{background:rgba(224,84,78,.12);border-bottom:1px solid rgba(224,84,78,.4);font-size:13.5px;padding:9px 0;color:#f0b3b0;display:none}
+.banniere.on{display:block}
+footer{border-top:1px solid var(--ligne);padding:38px 0 56px;font-size:13.5px;color:#7d7d7d}
+footer p{margin:0 0 8px;max-width:72ch}
+footer b{color:var(--gris);font-weight:600}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--orange);color:#111;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:11px 18px;z-index:60;display:none}
+.toast.on{display:block}
+</style>
+</head>
+<body>
+
+<div class="banniere" id="banniere"><div class="wrap">Mode démonstration : renseigne ton projet Supabase dans hyrox-db.js pour que les réservations soient vraiment enregistrées.</div></div>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="marque">Prépa <span>Hyrox</span><br>Basic-Fit Essey</div>
+    <a class="btn sm" href="#planning">Réserver</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Le mercredi,<em>on prépare la course</em></h1>
+    <p class="accroche">Quatre créneaux d'une heure, six personnes maximum. Un coach différent chaque semaine : Boris, puis Nino, puis Victor.</p>
+    <div class="cta-row">
+      <a class="btn" href="#planning">Réserver mon créneau</a>
+      <a class="btn ghost" href="#format">C'est quoi Hyrox&nbsp;?</a>
+    </div>
+    <p class="note-prix">15 € la séance, par carte — débité seulement une fois le créneau confirmé.</p>
+    <div class="chiffres">
+      <div><b>8</b><small>kilomètres</small></div>
+      <div><b>8</b><small>stations</small></div>
+      <div><b>1</b><small>chrono</small></div>
+      <div><b>6</b><small>par séance</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="format">
+  <div class="wrap">
+    <h2>Le format de la course</h2>
+    <p class="chapo">Un kilomètre de course, puis une station. Huit fois de suite, sans pause. L'ordre ne change jamais, c'est ce qui rend la préparation possible.</p>
+    <ol class="piste">
+      <li><span class="nom">SkiErg</span><span class="dose">1 000 m</span><span class="run">précédé de 1 km de course</span></li>
+      <li><span class="nom">Poussée de traîneau</span><span class="dose">50 m</span><span class="run">précédée de 1 km de course</span></li>
+      <li><span class="nom">Traction de traîneau</span><span class="dose">50 m</span><span class="run">précédée de 1 km de course</span></li>
+      <li><span class="nom">Burpee broad jumps</span><span class="dose">80 m</span><span class="run">précédés de 1 km de course</span></li>
+      <li><span class="nom">Rameur</span><span class="dose">1 000 m</span><span class="run">précédé de 1 km de course</span></li>
+      <li><span class="nom">Farmers carry</span><span class="dose">200 m</span><span class="run">précédé de 1 km de course</span></li>
+      <li><span class="nom">Fentes sac de sable</span><span class="dose">100 m</span><span class="run">précédées de 1 km de course</span></li>
+      <li><span class="nom">Wall balls</span><span class="dose">75 à 100 reps</span><span class="run">précédées du dernier kilomètre</span></li>
+    </ol>
+    <p class="chapo" style="margin-top:20px">Quatre catégories : Open, Pro, Doubles et Relais. On adapte les charges et le volume à celle que tu vises.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>Ce qu'on travaille</h2>
+    <p class="chapo">Une heure, un objectif par séance. Le programme tourne sur quatre semaines pour couvrir l'ensemble.</p>
+    <div class="grid2">
+      <div class="bloc"><h3>Technique des stations</h3><p>Position sur le traîneau, tenue du sac de sable, hauteur de wall ball. Là où on perd le plus de temps sans s'en rendre compte.</p></div>
+      <div class="bloc"><h3>Course compromise</h3><p>Repartir courir avec les jambes brûlées. On enchaîne station et kilomètre jusqu'à ce que la transition arrête de faire mal.</p></div>
+      <div class="bloc"><h3>Pacing</h3><p>Trouver l'allure que tu peux tenir huit fois. Chronos relevés à chaque séance pour suivre la progression.</p></div>
+      <div class="bloc"><h3>Le grip et les cuisses</h3><p>Les deux points de rupture de la course. Renforcement spécifique en fin de séance.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>Les coachs</h2>
+    <p class="chapo">On se relaie de semaine en semaine : un coach prend tout le mercredi, le suivant prend le mercredi d'après. Sur trois semaines, tu nous auras tous les trois.</p>
+    <div class="coachs" id="listeCoachs"></div>
+  </div>
+</section>
+
+<section class="sec" id="planning">
+  <div class="wrap">
+    <h2>Choisis ton créneau</h2>
+    <p class="chapo">Trois mercredis ouverts à la réservation, au Basic-Fit d'Essey-lès-Nancy.</p>
+    <div class="onglets" id="onglets" role="tablist"></div>
+    <div id="listeCreneaux"></div>
+    <p class="cr-info" style="margin-top:16px">Il faut être trois pour qu'une séance ait lieu. Tant que ce n'est pas le cas, ta place est gardée et ta carte n'est pas débitée.</p>
+  </div>
+</section>
+
+<section class="sec" id="suivi">
+  <div class="wrap">
+    <h2>Retrouver ma réservation</h2>
+    <p class="chapo">Entre l'email utilisé lors de l'inscription pour voir tes séances, leur statut et régler celles qui attendent un paiement.</p>
+    <div class="duo" style="max-width:520px">
+      <div><label for="f_suivi">Ton email</label><input type="email" id="f_suivi" autocomplete="email"></div>
+      <div style="display:flex;align-items:flex-end;padding-bottom:1px"><button class="btn" id="btnSuivi">Afficher</button></div>
+    </div>
+    <div id="resSuivi" style="margin-top:22px"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Victor Geoffroy — Entrepreneur individuel.</b> SIRET 10814643200019. Séances au Basic-Fit, 1 Av. de Saulxures, 54270 Essey-lès-Nancy.</p>
+    <p>Tarifs en euros TTC. TVA non applicable, article 293 B et/ou 261-4-4b du Code Général des Impôts. Paiement par carte bancaire sécurisé.</p>
+    <p>Activité indépendante non affiliée à HYROX ni à Basic-Fit. HYROX est une marque déposée de Upsolut Sports AG ; les séances proposées sont une préparation à ce format de course.</p>
+    <p style="margin-top:16px"><a href="hyrox-espace-coach.html">Espace coach</a></p>
+  </div>
+</footer>
+
+<dialog id="dlg">
+  <div class="dlg-bar">
+    <h2 id="dlgTitre">Réserver</h2>
+    <button type="button" id="fermer" aria-label="Fermer">×</button>
+  </div>
+  <div class="dlg-corps">
+    <div class="etapes"><span id="e1"></span><span id="e2"></span><span id="e3"></span></div>
+
+    <div id="etape1">
+      <div class="recap" id="recap1"></div>
+      <div class="duo">
+        <div><label for="f_prenom">Prénom</label><input type="text" id="f_prenom" autocomplete="given-name"></div>
+        <div><label for="f_nom">Nom</label><input type="text" id="f_nom" autocomplete="family-name"></div>
+      </div>
+      <div class="duo">
+        <div><label for="f_naissance">Date de naissance</label><input type="date" id="f_naissance"></div>
+        <div><label for="f_tel">Téléphone</label><input type="tel" id="f_tel" autocomplete="tel"></div>
+      </div>
+      <label for="f_email">Email</label><input type="email" id="f_email" autocomplete="email">
+      <label for="f_adherent">Numéro d'adhérent Basic-Fit (facultatif)</label><input type="text" id="f_adherent">
+      <div class="duo">
+        <div><label for="f_niveau">Ton niveau</label>
+          <select id="f_niveau"><option>Je débute</option><option>Je m'entraîne régulièrement</option><option>J'ai déjà fait une Hyrox</option></select></div>
+        <div><label for="f_objectif">Ton objectif</label>
+          <select id="f_objectif"><option>Découvrir le format</option><option>Finir ma première course</option><option>Améliorer mon chrono</option></select></div>
+      </div>
+      <p class="err" id="err1">Il manque le prénom, le nom, un email valide ou le téléphone.</p>
+      <p style="margin-top:18px"><button class="btn" id="vers2">Continuer vers le contrat</button></p>
+    </div>
+
+    <div id="etape2" hidden>
+      <div class="recap" id="recap2"></div>
+      <p style="font-size:14.5px;color:var(--gris)">Lis les conditions, puis coche les cases pour valider ton accord. Une copie signée t'est envoyée par email.</p>
+      <div class="cgv" id="texteCgv"></div>
+      <label class="coche requis"><input type="checkbox" id="c_cgv"><span>J'ai lu et j'accepte les conditions générales de vente ci-dessus.<small>Article 1 — aucune signature manuscrite n'est requise, l'acceptation engage ma responsabilité.</small></span></label>
+      <label class="coche requis"><input type="checkbox" id="c_sante"><span>Je déclare être en bonne santé et physiquement apte à pratiquer les exercices proposés.<small>Article 3 — j'ai passé une visite médicale m'autorisant cette pratique, ou je consulterai un médecin avant de débuter.</small></span></label>
+      <label class="coche requis"><input type="checkbox" id="c_annul"><span>J'ai compris les règles d'annulation et de paiement.<small>Annulation gratuite jusqu'à 24 h avant la séance ; passé ce délai la séance est due. La carte n'est débitée qu'une fois le créneau confirmé.</small></span></label>
+      <label class="coche requis"><input type="checkbox" id="c_majeur"><span>Je suis majeur, ou je dispose de l'autorisation écrite de mon représentant légal.<small>Article 2 — le coach peut demander ce justificatif à tout moment.</small></span></label>
+      <label class="coche"><input type="checkbox" id="c_image"><span>J'autorise l'utilisation de mon image à des fins de promotion.<small>Article 8 — facultatif et révocable à tout moment.</small></span></label>
+      <label for="f_mention">Recopie la mention « lu et approuvé »</label>
+      <input type="text" id="f_mention" placeholder="lu et approuvé">
+      <label for="f_signature">Signature — tape ton prénom et ton nom</label>
+      <input type="text" id="f_signature">
+      <p class="err" id="err2">Coche les quatre cases obligatoires, recopie exactement « lu et approuvé » et signe avec ton nom complet.</p>
+      <p style="margin-top:18px"><button class="btn" id="vers3">Signer et réserver ma place</button></p>
+    </div>
+
+    <div id="etape3" hidden><div class="fin" id="blocFin"></div></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="hyrox-db.js"></script>
+<script>
+"use strict";
+
+/* ═══ 1 · Base de données — voir hyrox-db.js ═══ */
+const CLE_RESA = "hyrox:reservations";
+const CLE_SEANCES = "hyrox:seances";
+const CLE_REMPLAC = "hyrox:remplacements";
+const BD = window.HyroxDB;
+if(!BD.persistant) document.getElementById("banniere").classList.add("on");
+
+/* ═══ 2 · Règles ═══ */
+const COACHS = ["Boris","Nino","Victor"];
+const PROFILS = {
+  Boris:{spe:"Endurance & pacing", txt:"Fond de course et gestion de l'effort sur les huit kilomètres."},
+  Nino:{spe:"Force & traîneau", txt:"Stations lourdes, poussée, traction, portés. La partie où ça se joue."},
+  Victor:{spe:"Technique & transitions", txt:"Gestes des stations et passage course-station sans casser le rythme."}
+};
+const HORAIRES = [["14h00","15h00"],["15h00","16h00"],["16h00","17h00"],["17h00","18h00"]];
+const CAPACITE = 6, SEUIL = 3, PRIX = 15;
+
+/* Rotation : un coach prend tout le mercredi, on change chaque semaine.
+   Ancrage : mercredi 16 septembre 2026 = Boris. */
+const ANCRAGE = Date.UTC(2026, 8, 16);
+function coachDuJour(d){
+  const j = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+  const sem = Math.round((j - ANCRAGE) / 604800000);
+  return COACHS[((sem % 3) + 3) % 3];
+}
+function mercrediDe(offset){
+  const d = new Date(); d.setHours(0,0,0,0);
+  d.setDate(d.getDate() + ((3 - d.getDay() + 7) % 7) + offset*7);
+  return d;
+}
+const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const enLettres = d => d.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+const court = d => d.toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
+
+const DATES = [0,1,2].map(mercrediDe);
+let jourActif = 0;
+let resas = [], remplacements = {};
+
+const coachDe = d => remplacements[iso(d)] || coachDuJour(d);
+const actives = (dateIso, slot) => resas.filter(r => r.date === dateIso && r.slot === slot && r.statut !== "annule");
+function etatSlot(dateIso, slot){
+  const n = actives(dateIso, slot).length;
+  return n >= CAPACITE ? "complet" : (n >= SEUIL ? "confirme" : "ouvert");
+}
+const LIB = {ouvert:"À confirmer", confirme:"Confirmé", complet:"Complet"};
+
+/* ═══ 3 · Chargement ═══ */
+async function charger(){
+  resas = await BD.lire(CLE_RESA, []);
+  remplacements = await BD.lire(CLE_REMPLAC, {});
+  rendreCoachs(); rendreOnglets(); rendrePlanning();
+}
+async function sauver(){ await BD.ecrire(CLE_RESA, resas); }
+
+function toast(t){
+  const el = document.getElementById("toast");
+  el.textContent = t; el.classList.add("on");
+  clearTimeout(el._h); el._h = setTimeout(()=>el.classList.remove("on"), 2600);
+}
+
+/* ═══ 4 · Rendu ═══ */
+function rendreCoachs(){
+  document.getElementById("listeCoachs").innerHTML = COACHS.map(n=>{
+    const prochain = DATES.find(d => coachDe(d) === n);
+    const actif = prochain && iso(prochain) === iso(DATES[0]);
+    return '<article class="coach '+(actif?"actif":"")+'"><h3>'+n+'</h3>'+
+      '<p class="spe">'+PROFILS[n].spe+'</p><p>'+PROFILS[n].txt+'</p>'+
+      '<p class="quand">'+(prochain ? (actif ? "Il coache ce mercredi" : "Mercredi "+court(prochain)) : "Dans trois semaines")+'</p></article>';
+  }).join("");
+}
+
+function rendreOnglets(){
+  document.getElementById("onglets").innerHTML = DATES.map((d,i)=>
+    '<button class="onglet" role="tab" aria-selected="'+(i===jourActif)+'" data-jour="'+i+'">'+
+    '<b>Mercredi '+court(d)+'</b><small>avec '+coachDe(d)+'</small></button>').join("");
+  document.querySelectorAll("[data-jour]").forEach(b=>{
+    b.onclick = ()=>{ jourActif = +b.dataset.jour; rendreOnglets(); rendrePlanning(); };
+  });
+}
+
+function rendrePlanning(){
+  const d = DATES[jourActif], dIso = iso(d), coach = coachDe(d);
+  document.getElementById("listeCreneaux").innerHTML = HORAIRES.map((h,i)=>{
+    const n = actives(dIso,i).length, s = etatSlot(dIso,i), manque = SEUIL - n;
+    let jauge = ""; for(let k=0;k<CAPACITE;k++) jauge += '<i class="'+(k<n?"pris":"")+'"></i>';
+    let info, bouton;
+    if(s === "complet"){
+      info = "<b>6 / 6</b> — plus de place";
+      bouton = '<button class="btn sm" disabled>Complet</button>';
+    } else if(s === "confirme"){
+      info = "<b>"+n+" / 6</b> — la séance aura lieu";
+      bouton = '<button class="btn sm" data-resa="'+i+'">Réserver · 15 €</button>';
+    } else {
+      info = n === 0 ? "Personne d'inscrit — <b>3 personnes</b> pour lancer la séance"
+                     : "<b>"+n+" / 6</b> — encore "+manque+(manque>1?" personnes":" personne")+" pour confirmer";
+      bouton = '<button class="btn sm" data-resa="'+i+'">Réserver ma place</button>';
+    }
+    return '<article class="creneau '+s+'">'+
+      '<div class="cr-haut"><div><div class="cr-h">'+h[0]+' – '+h[1]+'</div>'+
+      '<div class="cr-coach">'+enLettres(d)+' · avec '+coach+'</div></div>'+
+      '<span class="etat '+s+'">'+LIB[s]+'</span></div>'+
+      '<div class="jauge" role="img" aria-label="'+n+' inscrits sur 6">'+jauge+'</div>'+
+      '<div class="cr-bas"><span class="cr-info">'+info+'</span>'+bouton+'</div></article>';
+  }).join("");
+  document.querySelectorAll("[data-resa]").forEach(b=>{ b.onclick = ()=>ouvrir(+b.dataset.resa); });
+}
+
+/* ═══ 5 · Conditions générales ═══ */
+document.getElementById("texteCgv").innerHTML = `
+<h4>Préambule</h4><p>Le Coach fournit un service d'entraînement sportif encadré, en petit groupe de six personnes maximum. L'utilisation de ce service implique l'adhésion totale aux présentes conditions générales de vente : le Client déclare en avoir pris connaissance et les avoir acceptées, expressément et sans réserve, au jour de son inscription.</p>
+<h4>1 · Objet</h4><p>Les présentes conditions définissent les conditions dans lesquelles le Client peut accéder aux prestations proposées par le Coach. Aucune dérogation ne pourra être admise. Elles constituent l'intégralité des engagements entre les parties et annulent tout accord oral ou écrit antérieur relatif à leur objet. Le Client reconnaît qu'aucune signature manuscrite n'est requise pour leur acceptation, et engage sa responsabilité dès la validation de sa réservation.</p>
+<h4>2 · Condition d'inscription</h4><p>Le Client s'engage à fournir des informations exactes et conformes à la réalité. L'inscription n'est effective qu'après acceptation des présentes conditions et confirmation du créneau. Un mineur ne peut s'inscrire qu'avec l'autorisation écrite préalable de son représentant légal, que le Coach peut demander à tout moment et vérifier.</p>
+<h4>3 · Avertissement médical</h4><p>Il appartient au Client de s'assurer qu'il est en bonne santé et physiquement apte à pratiquer les entraînements proposés, au besoin en consultant un médecin avant de débuter. Le format Hyrox comporte des charges portées, poussées et tractées : le Client reconnaît avoir passé une visite médicale préalable l'autorisant à pratiquer les exercices proposés par le Coach.</p>
+<h4>4 · Prestation et tarif</h4><p>La prestation est une séance collective d'une heure de préparation à la course Hyrox, encadrée par le coach désigné pour la date réservée, au sein du club. Six participants au maximum, trois au minimum. Le prix est de 15 € TTC par personne et par séance, sans engagement de durée. TVA non applicable, article 293 B et/ou 261-4-4b du Code Général des Impôts.</p>
+<h4>5 · Confirmation et paiement</h4><p>La réservation est enregistrée sans débit immédiat. Le paiement par carte bancaire n'est demandé qu'une fois le créneau confirmé, c'est-à-dire lorsque trois participants au moins y sont inscrits. Le Client en est informé et dispose de 24 heures pour régler sa place, faute de quoi celle-ci est remise à disposition. Si le créneau n'atteint pas trois participants 48 heures avant la séance, il est annulé et aucune somme n'est due ni prélevée. Les paiements sont traités par un prestataire certifié PCI-DSS ; le Coach n'a jamais accès aux données de la carte.</p>
+<h4>6 · Annulation et remboursement</h4><p>Le Client peut annuler sans frais jusqu'à 24 heures avant le début de la séance ; la somme versée lui est remboursée ou reportée sur une séance ultérieure, à son choix. Toute absence non prévenue au moins 24 heures à l'avance est comptabilisée comme séance réalisée et reste due. En cas d'inaptitude sportive définitive attestée par certificat médical, les séances payées et non consommées sont remboursées sous 30 jours.</p>
+<h4>7 · Assiduité et discipline</h4><p>Le Client s'engage à être ponctuel. L'horaire convenu correspond au début de la séance : un retard du Client ne pourra être rattrapé. En cas de retard du Coach, la séance sera prolongée d'autant ou rattrapée sur la séance suivante, selon la disponibilité du Client. Une tenue et des chaussures adaptées sont requises.</p>
+<h4>8 · Droit à l'image</h4><p>L'utilisation de l'image du Client est soumise à son accord exprès, recueilli par case à cocher distincte lors de l'inscription. Ce consentement est facultatif, sans incidence sur la prestation, et révocable à tout moment sur simple demande.</p>
+<h4>9 · Responsabilité</h4><p>Le Client garantit le Coach contre toute action ou réclamation engagée à son encontre du fait d'une utilisation des prestations dans des conditions non conformes aux présentes conditions générales de vente.</p>
+<h4>10 · Vie privée</h4><p>Le Coach s'engage à protéger la vie privée de ses clients conformément à la réglementation en vigueur. Conformément au RGPD, le Client dispose d'un droit de consultation, de modification et d'effacement de ses données personnelles auprès du Coach, responsable de leur traitement.</p>
+<h4>Le Coach</h4><p>Victor Geoffroy, entrepreneur individuel — SIRET 10814643200019 — Basic-Fit, 1 Av. de Saulxures, 54270 Essey-lès-Nancy. Pour les séances encadrées par un autre coach de l'équipe, le contrat est conclu avec le coach désigné sur la date réservée.</p>`;
+
+/* ═══ 6 · Réservation ═══ */
+const dlg = document.getElementById("dlg");
+let slotChoisi = null, client = null, resaCourante = null;
+
+function ouvrir(slot){
+  slotChoisi = slot; client = null; resaCourante = null;
+  const d = DATES[jourActif];
+  ["etape1","etape2","etape3"].forEach((n,i)=>document.getElementById(n).hidden = i !== 0);
+  etapeVisuelle(1);
+  document.getElementById("dlgTitre").textContent = "Réserver · " + HORAIRES[slot][0];
+  const r = '<b>'+enLettres(d)+'</b>'+HORAIRES[slot][0]+' – '+HORAIRES[slot][1]+' avec '+coachDe(d)+' · 15 €';
+  document.getElementById("recap1").innerHTML = r;
+  document.getElementById("recap2").innerHTML = r;
+  document.getElementById("err1").classList.remove("on");
+  document.getElementById("err2").classList.remove("on");
+  dlg.showModal();
+}
+const etapeVisuelle = n => [1,2,3].forEach(i=>document.getElementById("e"+i).className = i<=n ? "on" : "");
+document.getElementById("fermer").onclick = ()=>dlg.close();
+
+document.getElementById("vers2").onclick = ()=>{
+  const v = id => document.getElementById(id).value.trim();
+  const email = v("f_email");
+  if(!(v("f_prenom") && v("f_nom") && v("f_tel") && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))){
+    document.getElementById("err1").classList.add("on"); return;
+  }
+  document.getElementById("err1").classList.remove("on");
+  client = {prenom:v("f_prenom"), nom:v("f_nom"), naissance:v("f_naissance"), tel:v("f_tel"),
+            email:email.toLowerCase(), adherent:v("f_adherent"), niveau:v("f_niveau"), objectif:v("f_objectif")};
+  document.getElementById("etape1").hidden = true;
+  document.getElementById("etape2").hidden = false;
+  etapeVisuelle(2);
+  document.getElementById("dlgTitre").textContent = "Contrat de participation";
+  document.querySelector(".dlg-corps").scrollTop = 0;
+};
+
+document.getElementById("vers3").onclick = async ()=>{
+  const coche = id => document.getElementById(id).checked;
+  const mention = document.getElementById("f_mention").value.trim().toLowerCase().replace(/\s+/g," ");
+  const sign = document.getElementById("f_signature").value.trim();
+  if(!(coche("c_cgv") && coche("c_sante") && coche("c_annul") && coche("c_majeur")
+       && mention === "lu et approuvé" && sign.split(" ").filter(Boolean).length >= 2)){
+    document.getElementById("err2").classList.add("on"); return;
+  }
+  document.getElementById("err2").classList.remove("on");
+
+  const d = DATES[jourActif], dIso = iso(d);
+  const avant = etatSlot(dIso, slotChoisi);
+  const resa = {
+    id: "r" + Date.now() + Math.floor(Math.random()*1000),
+    date: dIso, slot: slotChoisi, debut: HORAIRES[slotChoisi][0], fin: HORAIRES[slotChoisi][1],
+    coach: coachDe(d), montant: PRIX,
+    prenom: client.prenom, nom: client.nom, email: client.email, tel: client.tel,
+    naissance: client.naissance, adherent: client.adherent, niveau: client.niveau, objectif: client.objectif,
+    image: coche("c_image"), signature: sign, signeLe: new Date().toISOString(),
+    cgvVersion: "2026-09", statut: "en_attente", payeLe: null, presence: null
+  };
+  resas.push(resa);
+  resaCourante = resa;
+  const apres = etatSlot(dIso, slotChoisi);
+  /* Le créneau passe à trois : tout le monde bascule en attente de paiement */
+  if(apres !== "ouvert") actives(dIso, slotChoisi).forEach(r=>{ if(r.statut === "en_attente") r.statut = "a_payer"; });
+  await sauver();
+  rendrePlanning(); rendreOnglets();
+
+  const bascule = avant === "ouvert" && apres !== "ouvert";
+  afficherFin(bascule);
+  document.getElementById("etape2").hidden = true;
+  document.getElementById("etape3").hidden = false;
+  etapeVisuelle(3);
+  document.querySelector(".dlg-corps").scrollTop = 0;
+};
+
+function afficherFin(bascule){
+  const r = resaCourante;
+  document.getElementById("dlgTitre").textContent = r.statut === "a_payer" ? "Paiement" : "C'est enregistré";
+  if(r.statut === "a_payer"){
+    document.getElementById("blocFin").innerHTML =
+      '<div class="pic">✓</div><h3>'+(bascule ? "Créneau confirmé" : "Place réservée")+'</h3>'+
+      '<p>'+(bascule ? "Tu es la troisième personne inscrite : la séance est lancée et les autres viennent d'être prévenus."
+                     : "Ce créneau est déjà confirmé, tu peux régler ta place.")+'</p>'+
+      panneauCarte(r) +
+      '<div class="encart">Ton contrat signé part par email vers <b>'+r.email+'</b>. Sans règlement sous 24 h, la place est remise à disposition.</div>';
+    brancherPaiement(r);
+  } else {
+    const manque = SEUIL - actives(r.date, r.slot).length;
+    document.getElementById("blocFin").innerHTML =
+      '<div class="pic">✓</div><h3>Place réservée</h3>'+
+      '<p>Rien à payer pour l\'instant. Il manque '+manque+(manque>1?" personnes":" personne")+
+      ' pour confirmer la séance — tu recevras une notification et le lien de paiement à ce moment-là.</p>'+
+      '<div class="encart">Ton contrat signé part par email vers <b>'+r.email+'</b>. Si le créneau n\'atteint pas trois personnes 48 h avant, il est annulé et rien ne t\'est demandé.</div>'+
+      '<p style="margin-top:14px"><button class="btn ghost" onclick="document.getElementById(\'dlg\').close()">Fermer</button></p>';
+  }
+}
+
+function panneauCarte(r){
+  const d = new Date(r.date + "T12:00:00");
+  return '<div class="carte-paie">'+
+    '<div class="ligne"><span>Séance du '+court(d)+' · '+r.debut+'</span><b>'+r.montant+',00 €</b></div>'+
+    '<div class="champ-carte"><span>Numéro de carte</span><span class="marques"><span>VISA</span><span>MC</span><span>CB</span></span></div>'+
+    '<div class="champ-carte"><span>MM / AA</span><span>CVC</span></div>'+
+    '<div class="champ-carte"><span>Nom du titulaire</span><span></span></div>'+
+    '<p style="margin:14px 0 0"><button class="btn" id="payer" style="width:100%">Payer '+r.montant+' € par carte</button></p>'+
+    '<p class="secu">🔒 <span>Champs carte hébergés par le prestataire de paiement. Ce site ne voit ni n\'enregistre ton numéro de carte.</span></p>'+
+    '</div>';
+}
+
+function brancherPaiement(r){
+  const b = document.getElementById("payer");
+  if(!b) return;
+  b.onclick = async ()=>{
+    b.disabled = true; b.textContent = "Paiement en cours…";
+    await new Promise(res=>setTimeout(res, 700));
+    r.statut = "paye"; r.payeLe = new Date().toISOString();
+    await sauver();
+    document.getElementById("blocFin").innerHTML =
+      '<div class="pic">✓</div><h3>Paiement accepté</h3>'+
+      '<p>Rendez-vous mercredi '+court(new Date(r.date+"T12:00:00"))+' à '+r.debut+' avec '+r.coach+'. Reçu envoyé par email.</p>'+
+      '<div class="encart">Démonstration : aucun débit réel n\'a lieu. En production ce bouton valide le paiement Stripe et le reçu part automatiquement.</div>'+
+      '<p style="margin-top:14px"><button class="btn ghost" onclick="document.getElementById(\'dlg\').close()">Fermer</button></p>';
+    resas = await BD.lire(CLE_RESA, []);
+    rendrePlanning();
+    toast("Paiement enregistré");
+  };
+}
+
+/* ═══ 7 · Suivi par email ═══ */
+document.getElementById("btnSuivi").onclick = async ()=>{
+  const mail = document.getElementById("f_suivi").value.trim().toLowerCase();
+  const zone = document.getElementById("resSuivi");
+  if(!mail) return;
+  const miennes = (await BD.mesReservations(mail))
+                       .sort((a,b)=>a.date.localeCompare(b.date) || a.slot - b.slot);
+  if(!miennes.length){ zone.innerHTML = '<p class="cr-info">Aucune réservation trouvée avec cet email.</p>'; return; }
+  const etiq = {en_attente:["En attente de confirmation","ouvert"], a_payer:["Paiement attendu","ouvert"], paye:["Payé","confirme"]};
+  zone.innerHTML = miennes.map(r=>{
+    const [txt,cls] = etiq[r.statut];
+    const d = new Date(r.date+"T12:00:00");
+    return '<article class="creneau '+cls+'"><div class="cr-haut"><div>'+
+      '<div class="cr-h">'+r.debut+' – '+r.fin+'</div>'+
+      '<div class="cr-coach">'+enLettres(d)+' · avec '+r.coach+'</div></div>'+
+      '<span class="etat '+cls+'">'+txt+'</span></div>'+
+      '<div class="cr-bas"><span class="cr-info">Contrat signé le '+new Date(r.signeLe).toLocaleDateString("fr-FR")+' par '+r.signature+'</span>'+
+      (r.statut === "a_payer" ? '<button class="btn sm" data-payer="'+r.id+'">Payer 15 € par carte</button>' : '')+
+      '</div></article>';
+  }).join("");
+  zone.querySelectorAll("[data-payer]").forEach(b=>{
+    b.onclick = ()=>{
+      resaCourante = miennes.find(x=>x.id === b.dataset.payer);
+      slotChoisi = resaCourante.slot;
+      ["etape1","etape2","etape3"].forEach((n,i)=>document.getElementById(n).hidden = i !== 2);
+      etapeVisuelle(3);
+      document.getElementById("dlgTitre").textContent = "Paiement";
+      document.getElementById("blocFin").innerHTML =
+        '<h3>Régler ma séance</h3><p>Séance du '+enLettres(new Date(resaCourante.date+"T12:00:00"))+' à '+resaCourante.debut+'.</p>'+
+        panneauCarte(resaCourante);
+      brancherPaiement(resaCourante);
+      dlg.showModal();
+      dlg.addEventListener("close", ()=>document.getElementById("btnSuivi").click(), {once:true});
+    };
+  });
+};
+
+charger();
+</script>
+</body>
+</html>

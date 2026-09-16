@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portail administrateur — Prépa Hyrox</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0E0E0E;--surface:#171717;--surface2:#1F1F1F;--orange:#F7941E;--orange2:#FFB04D;
+  --blanc:#FFF;--gris:#9A9A9A;--ligne:#2E2E2E;--vert:#3FBF6F;--rouge:#E0544E;--bleu:#5AA9E6;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --cond:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --texte:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{margin:0;background:var(--noir);color:var(--blanc);font-family:var(--texte);font-size:15px;line-height:1.55}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:1;margin:0}
+p{margin:0 0 .9em}
+a{color:var(--orange)}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+.btn{font-family:var(--cond);font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.04em;background:var(--orange);color:#111;border:0;padding:11px 18px;cursor:pointer;clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.btn:hover{background:var(--orange2)}
+.btn.ghost{background:transparent;color:var(--blanc);border:1px solid var(--ligne);clip-path:none}
+.btn.ghost:hover{border-color:var(--orange);color:var(--orange)}
+.btn.danger{background:transparent;border:1px solid rgba(224,84,78,.6);color:#f08c88;clip-path:none}
+.btn.danger:hover{background:rgba(224,84,78,.12)}
+.btn.sm{padding:6px 12px;font-size:14px}
+:focus-visible{outline:3px solid var(--orange2);outline-offset:2px}
+label{display:block;font-family:var(--cond);font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);margin:14px 0 5px}
+input,select{width:100%;background:var(--surface2);border:1px solid var(--ligne);color:var(--blanc);padding:11px 12px;font-family:var(--texte);font-size:16px}
+input:focus,select:focus{border-color:var(--orange)}
+.err{color:var(--rouge);font-size:14px;margin-top:10px;display:none}
+.err.on{display:block}
+
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.carte{width:min(400px,100%);background:var(--surface);border-top:5px solid var(--orange);padding:26px}
+.carte h1{font-size:27px;margin-bottom:6px}
+.carte .sub{color:var(--gris);font-size:14px}
+
+#appli{display:none}
+header{position:sticky;top:0;z-index:20;background:rgba(14,14,14,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--ligne)}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+.qui{font-family:var(--cond);font-size:18px;text-transform:uppercase;letter-spacing:.03em}
+.qui b{color:var(--orange)}
+.banniere{background:rgba(224,84,78,.12);border-bottom:1px solid rgba(224,84,78,.4);font-size:13px;padding:8px 0;color:#f0b3b0;display:none}
+.banniere.on{display:block}
+
+.titre-page{padding:26px 0 6px}
+.titre-page h1{font-size:clamp(28px,7vw,44px)}
+.titre-page p{color:var(--gris);font-size:14px;margin-top:8px}
+.filtres{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 24px}
+.filtre{background:var(--surface);border:1px solid var(--ligne);color:var(--blanc);padding:8px 13px;cursor:pointer;font-family:var(--cond);font-size:16px;text-transform:uppercase;letter-spacing:.04em}
+.filtre[aria-pressed=true]{border-color:var(--orange);background:#1C1913;color:var(--orange)}
+
+.kpi{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-bottom:26px}
+@media(min-width:680px){.kpi{grid-template-columns:repeat(4,1fr)}}
+.kpi div{background:var(--noir);padding:14px 14px 16px}
+.kpi b{display:block;font-family:var(--display);font-size:26px}
+.kpi small{font-family:var(--cond);font-size:13.5px;color:var(--gris);text-transform:uppercase;letter-spacing:.05em}
+
+section.bloc{padding:30px 0;border-top:1px solid var(--ligne)}
+section.bloc h2{font-size:24px;margin-bottom:6px}
+section.bloc .chapo{color:var(--gris);font-size:14px;margin-bottom:16px;max-width:66ch}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 6px;border-bottom:1px solid var(--ligne);vertical-align:middle}
+th{font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em;color:var(--gris);font-weight:600;font-size:13px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tfoot td{font-weight:600;border-bottom:0;border-top:2px solid var(--orange)}
+.barre{height:9px;background:#2a2a2a;margin-top:6px}
+.barre i{display:block;height:100%;background:var(--orange)}
+.nom-coach{font-family:var(--cond);font-size:19px;text-transform:uppercase;letter-spacing:.03em}
+.pastille{font-family:var(--cond);font-size:13px;font-weight:700;text-transform:uppercase;padding:3px 8px;white-space:nowrap}
+.p-paye{background:rgba(63,191,111,.15);color:var(--vert)}
+.p-attente{background:rgba(247,148,30,.15);color:var(--orange)}
+.p-annule{background:rgba(224,84,78,.14);color:#f08c88}
+.p-gel{background:#262626;color:#8d8d8d}
+.vide{color:var(--gris);font-size:14px;padding:14px 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.encart{background:rgba(247,148,30,.1);border:1px solid rgba(247,148,30,.35);padding:13px;font-size:13.5px;margin-top:16px}
+.zone-risque{border:1px solid rgba(224,84,78,.4);padding:16px;margin-top:18px}
+.zone-risque h3{font-size:18px;color:#f08c88;margin-bottom:8px}
+footer{border-top:1px solid var(--ligne);padding:24px 0 46px;color:#7d7d7d;font-size:13px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--orange);color:#111;font-family:var(--cond);font-weight:700;text-transform:uppercase;padding:11px 18px;z-index:60;display:none}
+.toast.on{display:block}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="carte">
+    <h1>Portail administrateur</h1>
+    <p class="sub">Accès unique — Prépa Hyrox, Basic-Fit Essey-lès-Nancy</p>
+    <label for="mdp">Mot de passe</label>
+    <input type="password" id="mdp" autocomplete="current-password">
+    <p class="err" id="errLog">Mot de passe incorrect.</p>
+    <p style="margin-top:18px"><button class="btn" id="entrer">Ouvrir le portail</button></p>
+    <p style="margin-top:16px;font-size:13px"><a href="hyrox-espace-coach.html">Espace coach</a> · <a href="hyrox-training-club.html">Site public</a></p>
+  </div>
+</div>
+
+<div id="appli">
+<div class="banniere" id="banniere"><div class="wrap">Sauvegarde indisponible sur cet hébergement : les chiffres affichés ne seront pas conservés.</div></div>
+<header><div class="wrap hbar">
+  <div class="qui">Portail <b>administrateur</b></div>
+  <button class="btn ghost sm" id="sortir">Quitter</button>
+</div></header>
+
+<div class="wrap">
+  <div class="titre-page">
+    <h1>Activité de l'équipe</h1>
+    <p id="periodeTexte">—</p>
+  </div>
+
+  <div class="filtres" id="filtres">
+    <button class="filtre" data-p="30" aria-pressed="false">30 derniers jours</button>
+    <button class="filtre" data-p="90" aria-pressed="false">3 mois</button>
+    <button class="filtre" data-p="365" aria-pressed="false">12 mois</button>
+    <button class="filtre" data-p="0" aria-pressed="true">Depuis le début</button>
+  </div>
+
+  <div class="kpi" id="kpi"></div>
+
+  <section class="bloc">
+    <h2>Par coach</h2>
+    <p class="chapo">Heures effectuées et argent généré, calculés sur les séances clôturées par chaque coach dans son espace. Une séance clôturée vaut une heure.</p>
+    <table id="tabCoachs"></table>
+    <div id="barres" style="margin-top:22px"></div>
+  </section>
+
+  <section class="bloc">
+    <h2>Historique par mercredi</h2>
+    <p class="chapo">Chaque ligne est une journée de séances, du plus récent au plus ancien.</p>
+    <table id="tabHisto"></table>
+  </section>
+
+  <section class="bloc">
+    <h2>Réservations</h2>
+    <p class="chapo">Toutes les inscriptions enregistrées, contrat signé compris.</p>
+    <table id="tabResas"></table>
+    <div class="actions">
+      <button class="btn ghost sm" id="expResas">Exporter les réservations (CSV)</button>
+      <button class="btn ghost sm" id="expSeances">Exporter les heures et recettes (CSV)</button>
+      <button class="btn ghost sm" id="expPaie">Exporter le récapitulatif par coach (CSV)</button>
+    </div>
+    <div class="encart">Les exports contiennent des données personnelles : à conserver de façon sécurisée et à supprimer une fois la comptabilité faite.</div>
+  </section>
+
+  <section class="bloc">
+    <h2>Maintenance</h2>
+    <div class="zone-risque">
+      <h3>Remettre la base à zéro</h3>
+      <p style="font-size:14px;color:var(--gris)">Supprime toutes les réservations, séances clôturées et remplacements. Irréversible.</p>
+      <button class="btn danger sm" id="reset">Tout effacer</button>
+    </div>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <p>Victor Geoffroy — SIRET 10814643200019 — Basic-Fit, 1 Av. de Saulxures, 54270 Essey-lès-Nancy.</p>
+  <p><a href="hyrox-training-club.html">Site public</a> · <a href="hyrox-espace-coach.html">Espace coach</a></p>
+</div></footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ═══ Accès unique administrateur ═══
+   Démonstration : mot de passe visible dans le code source.
+   En production, authentification côté serveur (voir INTEGRATION.md). */
+const MDP_ADMIN = "HYROX-ESSEY-ADMIN-2026";
+
+const CLE_RESA = "hyrox:reservations", CLE_SEANCES = "hyrox:seances", CLE_REMPLAC = "hyrox:remplacements";
+const BD = (()=>{
+  const dispo = typeof window !== "undefined" && window.storage && typeof window.storage.get === "function";
+  const mem = {};
+  return {
+    persistant: !!dispo,
+    async lire(c,d){ if(!dispo) return c in mem ? mem[c] : d;
+      try{ const r = await window.storage.get(c, true); return r && r.value ? JSON.parse(r.value) : d; }catch(e){ return d; } },
+    async ecrire(c,v){ mem[c]=v; if(!dispo) return false;
+      try{ await window.storage.set(c, JSON.stringify(v), true); return true; }catch(e){ return false; } }
+  };
+})();
+
+const COACHS = ["Boris","Nino","Victor"];
+const PRIX = 15;
+let resas = [], seances = [], periode = 0;
+
+const euros = n => n.toLocaleString("fr-FR") + " €";
+const jjmmaa = s => new Date(s+"T12:00:00").toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});
+function toast(t){ const e=document.getElementById("toast"); e.textContent=t; e.classList.add("on");
+  clearTimeout(e._h); e._h=setTimeout(()=>e.classList.remove("on"),2500); }
+
+document.getElementById("entrer").onclick = async ()=>{
+  if(document.getElementById("mdp").value !== MDP_ADMIN){ document.getElementById("errLog").classList.add("on"); return; }
+  document.getElementById("login").style.display = "none";
+  document.getElementById("appli").style.display = "block";
+  if(!BD.persistant) document.getElementById("banniere").classList.add("on");
+  await charger();
+};
+document.getElementById("mdp").addEventListener("keydown", e=>{ if(e.key==="Enter") document.getElementById("entrer").click(); });
+document.getElementById("sortir").onclick = ()=>location.reload();
+
+async function charger(){
+  resas = await BD.lire(CLE_RESA, []);
+  seances = await BD.lire(CLE_SEANCES, []);
+  rendre();
+}
+
+document.querySelectorAll(".filtre").forEach(b=>{
+  b.onclick = ()=>{
+    periode = +b.dataset.p;
+    document.querySelectorAll(".filtre").forEach(x=>x.setAttribute("aria-pressed", x === b));
+    rendre();
+  };
+});
+
+const dansPeriode = dateIso => {
+  if(!periode) return true;
+  const limite = new Date(); limite.setDate(limite.getDate() - periode);
+  return new Date(dateIso + "T12:00:00") >= limite;
+};
+
+function rendre(){
+  const s = seances.filter(x=>dansPeriode(x.date));
+  const r = resas.filter(x=>dansPeriode(x.date));
+
+  document.getElementById("periodeTexte").textContent =
+    (periode ? "Sur les " + periode + " derniers jours" : "Depuis l'ouverture") +
+    " · " + s.length + " séance" + (s.length>1?"s":"") + " clôturée" + (s.length>1?"s":"") +
+    " · " + r.filter(x=>x.statut!=="annule").length + " inscription" + (r.length>1?"s":"");
+
+  const heures = s.reduce((a,x)=>a+x.duree,0);
+  const ca = s.reduce((a,x)=>a+x.encaisse,0);
+  const attendus = r.filter(x=>x.statut === "a_payer").length * PRIX;
+  const remplissage = s.length ? Math.round(s.reduce((a,x)=>a+x.inscrits,0)/s.length*10)/10 : 0;
+  document.getElementById("kpi").innerHTML =
+    '<div><b>'+heures+' h</b><small>heures encadrées</small></div>'+
+    '<div><b>'+euros(ca)+'</b><small>chiffre encaissé</small></div>'+
+    '<div><b>'+euros(attendus)+'</b><small>paiements en attente</small></div>'+
+    '<div><b>'+remplissage+' / 6</b><small>remplissage moyen</small></div>';
+
+  /* par coach */
+  const parCoach = COACHS.map(nom=>{
+    const ses = s.filter(x=>x.coach === nom);
+    return {
+      nom, seances: ses.length,
+      heures: ses.reduce((a,x)=>a+x.duree,0),
+      ca: ses.reduce((a,x)=>a+x.encaisse,0),
+      participants: ses.reduce((a,x)=>a+x.presents,0),
+      inscrits: ses.reduce((a,x)=>a+x.inscrits,0)
+    };
+  });
+  const totH = parCoach.reduce((a,c)=>a+c.heures,0), totCA = parCoach.reduce((a,c)=>a+c.ca,0);
+  document.getElementById("tabCoachs").innerHTML =
+    '<thead><tr><th>Coach</th><th class="num">Séances</th><th class="num">Heures</th><th class="num">Participants</th><th class="num">Chiffre généré</th><th class="num">€ / heure</th></tr></thead><tbody>'+
+    parCoach.map(c=>'<tr><td class="nom-coach">'+c.nom+'</td><td class="num">'+c.seances+'</td><td class="num">'+c.heures+' h</td>'+
+      '<td class="num">'+c.participants+'</td><td class="num">'+euros(c.ca)+'</td>'+
+      '<td class="num">'+(c.heures ? euros(Math.round(c.ca/c.heures)) : "—")+'</td></tr>').join("")+
+    '</tbody><tfoot><tr><td>Total</td><td class="num">'+parCoach.reduce((a,c)=>a+c.seances,0)+'</td>'+
+    '<td class="num">'+totH+' h</td><td class="num">'+parCoach.reduce((a,c)=>a+c.participants,0)+'</td>'+
+    '<td class="num">'+euros(totCA)+'</td><td class="num">'+(totH ? euros(Math.round(totCA/totH)) : "—")+'</td></tr></tfoot>';
+
+  const max = Math.max(1, ...parCoach.map(c=>c.ca));
+  document.getElementById("barres").innerHTML = parCoach.map(c=>
+    '<div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between">'+
+    '<span class="nom-coach">'+c.nom+'</span><span>'+euros(c.ca)+' · '+c.heures+' h</span></div>'+
+    '<div class="barre"><i style="width:'+Math.round(c.ca/max*100)+'%"></i></div></div>').join("");
+
+  /* historique par date */
+  const jours = {};
+  s.forEach(x=>{
+    jours[x.date] = jours[x.date] || {date:x.date, coach:x.coach, seances:0, heures:0, inscrits:0, presents:0, ca:0};
+    const j = jours[x.date];
+    j.seances++; j.heures += x.duree; j.inscrits += x.inscrits; j.presents += x.presents; j.ca += x.encaisse;
+  });
+  const listeJours = Object.values(jours).sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById("tabHisto").innerHTML = listeJours.length
+    ? '<thead><tr><th>Mercredi</th><th>Coach</th><th class="num">Séances</th><th class="num">Heures</th><th class="num">Présents</th><th class="num">Recette</th></tr></thead><tbody>'+
+      listeJours.map(j=>'<tr><td>'+jjmmaa(j.date)+'</td><td class="nom-coach">'+j.coach+'</td>'+
+        '<td class="num">'+j.seances+'</td><td class="num">'+j.heures+' h</td>'+
+        '<td class="num">'+j.presents+' / '+j.inscrits+'</td><td class="num">'+euros(j.ca)+'</td></tr>').join("")+'</tbody>'
+    : '<tbody><tr><td class="vide">Aucune séance clôturée sur la période. Les coachs clôturent leurs séances depuis leur espace, en bas de chaque créneau.</td></tr></tbody>';
+
+  /* réservations */
+  const tri = r.slice().sort((a,b)=>b.date.localeCompare(a.date) || a.slot - b.slot);
+  const etiq = {en_attente:["En attente","p-gel"], a_payer:["À payer","p-attente"], paye:["Payé","p-paye"], annule:["Annulée","p-annule"]};
+  document.getElementById("tabResas").innerHTML = tri.length
+    ? '<thead><tr><th>Date</th><th>Créneau</th><th>Participant</th><th>Coach</th><th>Contrat</th><th>Paiement</th></tr></thead><tbody>'+
+      tri.map(x=>{
+        const e = etiq[x.statut] || ["?","p-gel"];
+        return '<tr><td>'+jjmmaa(x.date)+'</td><td>'+x.debut+'</td>'+
+          '<td>'+x.prenom+' '+x.nom+'<div style="color:var(--gris);font-size:12.5px">'+x.email+'</div></td>'+
+          '<td>'+x.coach+'</td><td>'+(x.signature ? "signé" : "—")+'</td>'+
+          '<td><span class="pastille '+e[1]+'">'+e[0]+'</span></td></tr>';
+      }).join("")+'</tbody>'
+    : '<tbody><tr><td class="vide">Aucune réservation enregistrée. Passe par le site public pour en créer une, elle apparaîtra ici.</td></tr></tbody>';
+}
+
+/* ═══ Exports ═══ */
+function csv(nom, lignes){
+  const t = "\uFEFF" + lignes.map(l=>l.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(";")).join("\r\n");
+  const u = URL.createObjectURL(new Blob([t],{type:"text/csv;charset=utf-8"}));
+  const a = document.createElement("a"); a.href=u; a.download=nom; a.click(); URL.revokeObjectURL(u);
+  toast("Fichier exporté");
+}
+document.getElementById("expResas").onclick = ()=>{
+  const l = [["Date","Créneau","Coach","Prénom","Nom","Email","Téléphone","Naissance","Niveau","Objectif","Statut","Signé le","Droit image","Montant"]];
+  resas.filter(x=>dansPeriode(x.date)).forEach(x=>l.push([x.date, x.debut+"-"+x.fin, x.coach, x.prenom, x.nom, x.email, x.tel,
+    x.naissance||"", x.niveau, x.objectif, x.statut, x.signeLe ? new Date(x.signeLe).toLocaleString("fr-FR") : "", x.image?"oui":"non", x.montant+" €"]));
+  csv("reservations.csv", l);
+};
+document.getElementById("expSeances").onclick = ()=>{
+  const l = [["Date","Créneau","Coach","Durée","Inscrits","Présents","Encaissé","Clôturée le"]];
+  seances.filter(x=>dansPeriode(x.date)).forEach(x=>l.push([x.date, x.debut+"-"+x.fin, x.coach, x.duree+" h",
+    x.inscrits, x.presents, x.encaisse+" €", new Date(x.clotureLe).toLocaleString("fr-FR")]));
+  csv("seances.csv", l);
+};
+document.getElementById("expPaie").onclick = ()=>{
+  const l = [["Coach","Séances","Heures","Participants","Chiffre généré","Euros par heure"]];
+  COACHS.forEach(nom=>{
+    const ses = seances.filter(x=>x.coach === nom && dansPeriode(x.date));
+    const h = ses.reduce((a,x)=>a+x.duree,0), ca = ses.reduce((a,x)=>a+x.encaisse,0);
+    l.push([nom, ses.length, h+" h", ses.reduce((a,x)=>a+x.presents,0), ca+" €", h ? Math.round(ca/h)+" €" : "—"]);
+  });
+  csv("recapitulatif-coachs.csv", l);
+};
+
+document.getElementById("reset").onclick = async ()=>{
+  if(!confirm("Effacer définitivement toutes les réservations et séances ?")) return;
+  if(!confirm("Dernière confirmation : cette action est irréversible.")) return;
+  resas = []; seances = [];
+  await BD.ecrire(CLE_RESA, []);
+  await BD.ecrire(CLE_SEANCES, []);
+  await BD.ecrire(CLE_REMPLAC, {});
+  toast("Base remise à zéro");
+  rendre();
+};
+</script>
+</body>
+</html>
